@@ -1,4 +1,4 @@
-# MCP Bitcoin Server
+# MCP Crypto Server
 
 A Model Context Protocol (MCP) server that provides Bitcoin and cryptocurrency data from the CoinGecko API.
 
@@ -35,7 +35,22 @@ npm run build
 npx @modelcontextprotocol/inspector node dist/index.js
 ```
 This opens the MCP inspector in your localhost
+<img width="1728" height="924" alt="Screenshot 2025-07-30 at 12 42 31" src="https://github.com/user-attachments/assets/d27da7d0-8f13-4b4a-927b-9081be50c500" />
+
+### Testing on Claude desktop
+1. Open Claude Desktop → Preferences → Developer → Edit config
+- Add this configuration to claude_desktop_config.json file
+```bash
+"bitcoin": {
+      "command": "node",
+      "args": [
+        <path_to_your_project_root>
+      ]
+}
 ```
+2. Restart claude desktop
+3. Try queries like: "Get top5 gainers in crypto today", "Get Bitcoin details", "Compare Bitcoin to Ethereum"
+<img width="1726" height="905" alt="Claude MCP" src="https://github.com/user-attachments/assets/38aa5ddb-a511-4ade-b3cb-4b20c4471a59" />
 
 ## MCP Resources
 
@@ -146,13 +161,6 @@ server.prompt("crypto_market_summary", "...", {...}, async (args) => {...});
 const transport = new StdioServerTransport();
 await server.connect(transport);
 ```
-
-### Available Scripts
-- `npm run build`: Build the TypeScript project
-- `npm run start`: Start the production server
-- `npm run dev`: Start the development server with hot reload
-- `npm run clean`: Clean the build directory
-
 ## Dependencies
 
 - `@modelcontextprotocol/sdk`: Latest MCP SDK for server implementation
